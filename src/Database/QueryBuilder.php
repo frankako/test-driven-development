@@ -45,11 +45,18 @@ abstract class QueryBuilder {
 		}
 
 		$this->parseWhere([$column => $value], $operator);
-		$query = $this->prepare($this->theQuery($this->operation));
-		//for query test $this->query = $this->theQuery($this->operation)
-		//operation from chained select is inject in theQuery;
-		$this->statement = $this->execute($query); //note $query is also stmt.
+		// $query = $this->prepare($this->theQuery($this->operation));
+		// //for query test $this->query = $this->theQuery($this->operation)
+		// //operation from chained select is inject in theQuery;
+		// $this->statement = $this->execute($query); //note $query is also stmt.
 
+		return $this;
+	}
+
+//we move query so it can work for mysqli
+	public function Query() {
+		$query = $this->prepare($this->theQuery($this->operation));
+		$this->statement = $this->execute($query);
 		return $this;
 	}
 
@@ -109,7 +116,12 @@ abstract class QueryBuilder {
 	}
 
 //record for id given
-	public function find($customid = 'id', $id) {
+	public function find($customid, $id = NULL) {
+		if ($id === NULL) {
+			$id = $customid;
+			$customid = "id";
+		}
+
 		return $this->where($customid, $id)->first();
 	}
 

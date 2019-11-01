@@ -31,7 +31,7 @@ class PDOQueryBuilder extends QueryBuilder {
 	}
 
 	public function fetchInto($className) {
-		return $this->statement->fetchAll(\PDO::FETCH_OBJ, $className);
+		return $this->statement->fetchAll(\PDO::FETCH_CLASS, $className);
 	}
 
 	public function beginTransaction() {

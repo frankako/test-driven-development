@@ -1,0 +1,35 @@
+Application (Tests\Units\Application)
+ ? It can assert instance of app
+ ? It can get basic application data set
+
+Database Connectiontest (Test\Units\DatabaseConnectiontest)
+ ? It is instance of db connection interface
+ ? It is a valid pdo connection
+ ? It can connect to db with pdo
+ ? It can connect to db with mysqli
+ ? It throws missing argument exception without keys or wrong keys
+
+Logger (Test\Units\Logger)
+ ? It can assert instance of logger interface
+ ? It can create log levels
+
+Query Builder (Test\Units\QueryBuilder)
+ ? It can perform raw query
+ ? It can perform select query
+ ? It can perform select query with multiple where clauses
+ ? It can create records
+ ? It can update records
+ ? It can delete records
+ ? It can find by
+ ? It can find
+
+Repository (Tests\Units\Repository)
+ ? It can create record with entity
+ ? It can find by criteria
+ ? It can update given entity
+ ? It can delete given entity
+
+Time: 938 ms, Memory: 6.00 MB
+
+OK (21 tests, 42 assertions)
+

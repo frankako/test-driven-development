@@ -36,13 +36,13 @@ class QueryBuilderTest extends TestCase {
 	}
 
 	public function testItCanPerformSelectQuery() {
-		$result = $this->sql->table('reports')->select('*')->where('report_id', 2)->get();
+		$result = $this->sql->table('reports')->select('*')->where('report_id', 2)->Query()->get();
 		self::assertNotEmpty($result);
 		self::assertIsArray($result);
 	}
 
 	public function testItCanPerformSelectQueryWithMultipleWhereClauses() {
-		$result = $this->sql->table('reports')->select('*')->where('email', '=', 'jmorris@mail.com')->get();
+		$result = $this->sql->table('reports')->select('*')->where('email', '=', 'jmorris@mail.com')->Query()->get();
 		self::assertNotEmpty($result);
 		self::assertIsArray($result);
 	}
@@ -67,24 +67,24 @@ class QueryBuilderTest extends TestCase {
 
 	public function testItCanUpdateRecords() {
 		$result = $this->sql->table('reports')->update(['report_type' => 'Cors Headers', 'link' => 'https://morecors.com'])->where('report_id', 3);
-		$report = $this->sql->table('reports')->select('*')->where('link', '=', 'https://morecors.com')->get();
+		$report = $this->sql->table('reports')->select('*')->where('link', '=', 'https://morecors.com')->Query()->get();
 		self::assertNotEmpty($report);
 		self::assertIsArray($report);
 	}
 
 	public function testItCanDeleteRecords() {
-		$result = $this->sql->table('reports')->delete()->where('report_id', 27)->affected();
+		$result = $this->sql->table('reports')->delete()->where('report_id', 21)->Query()->affected();
 		self::assertSame(1, $result);
 	}
 
 	public function testItCanFindBy() {
-		$result = $this->sql->table('reports')->select('*')->where('report_type', 'Cors Headers')->get();
+		$result = $this->sql->table('reports')->select('*')->where('report_type', 'Cors Headers')->Query()->get();
 		self::assertNotEmpty($result);
 		self::assertIsArray($result);
 	}
 
 	public function testItCanFind() {
-		$result = $this->sql->table('reports')->select('*')->where('report_id', 23)->get();
+		$result = $this->sql->table('reports')->select('*')->where('report_id', 23)->Query()->get();
 		self::assertNotEmpty($result);
 		self::assertIsArray($result);
 	}
